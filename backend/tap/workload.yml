@@ -1,0 +1,16 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: animal-rescue-backend
+  labels:
+    apps.tanzu.vmware.com/workload-type: web-dev
+    app.kubernetes.io/part-of: animal-rescue-backend
+  annotations:
+    autoscaling.knative.dev/minScale: '1'
+spec:
+  source:
+    git:
+      url: https://github.com/jianhuabi/animal-rescue
+      ref:
+        branch: main
+    subPath: backend
