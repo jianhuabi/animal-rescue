@@ -1,0 +1,309 @@
+ingress:
+  enabled: true
+  virtual_host_fqdn: prometheus.dragonstone.tkg-aws-e2-lab.winterfell.be
+  tlsCertificate:
+    tls.crt: |-
+      -----BEGIN CERTIFICATE-----
+      MIIFbTCCBFWgAwIBAgISBEhaMupO/cyhEvsN1Y8LyJy3MA0GCSqGSIb3DQEBCwUA
+      MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+      EwJSMzAeFw0yMjAyMjgwMjE5NTdaFw0yMjA1MjkwMjE5NTZaMD4xPDA6BgNVBAMT
+      M3Byb21ldGhldXMuZHJhZ29uc3RvbmUudGtnLWF3cy1lMi1sYWIud2ludGVyZmVs
+      bC5iZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAON2GLhg82D4x+/D
+      4C/4vqtTdXbg1yDkxV1OXMQARa6I6GnqKLn8Ekb8ONy0RYmGvgNMBimgA+Jhf6Gl
+      DzMOGxyJIjPiizel2MOjZez+4fOODLnXFTb45JgYHSI7JdHNEaj2Mcq9ohCRgqaR
+      x9X5AZnaAhBKpIhNQCZa/CpepGsp5wn4B/Gg566GWpvry7CDdw5QWX3g9DF4JUzi
+      sCYNjShVRTSJp3+j8sWBF/WiK08WgJYXwO749Gbquen45LLbklO2UmLWMQcthvCD
+      ZYhL681xZ7U1+RJblKU3hcXWW9K7Ly1XAWrEqFoATTGSTz+377trZlnKyeXwVbJe
+      CYAkNKkCAwEAAaOCAm8wggJrMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggr
+      BgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUsTt03c4+
+      dfinEyrvceSu3SFAAy4wHwYDVR0jBBgwFoAUFC6zF7dYVsuuUAlA5h+vnYsUwsYw
+      VQYIKwYBBQUHAQEESTBHMCEGCCsGAQUFBzABhhVodHRwOi8vcjMuby5sZW5jci5v
+      cmcwIgYIKwYBBQUHMAKGFmh0dHA6Ly9yMy5pLmxlbmNyLm9yZy8wPgYDVR0RBDcw
+      NYIzcHJvbWV0aGV1cy5kcmFnb25zdG9uZS50a2ctYXdzLWUyLWxhYi53aW50ZXJm
+      ZWxsLmJlMEwGA1UdIARFMEMwCAYGZ4EMAQIBMDcGCysGAQQBgt8TAQEBMCgwJgYI
+      KwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIIBBQYKKwYBBAHW
+      eQIEAgSB9gSB8wDxAHYA36Veq2iCTx9sre64X04+WurNohKkal6OOxLAIERcKnMA
+      AAF/PleEzQAABAMARzBFAiBj8qrNdnZdXFUpqk3q1RacrlPFcWgNQpJH4KO8yMH/
+      3AIhALYigiEpmq7fC0FcoU7UttQlf4MFNmrwbMCYtNEFD7M/AHcARqVV63X6kSAw
+      taKJafTzfREsQXS+/Um4havy/HD+bUcAAAF/PleE9AAABAMASDBGAiEAoMhkkxPX
+      00Rbt25yM9CbfwpcXbXgIAHaxMYML8nvdIYCIQDaDFZEuxbk0ZZVNujh+DWnJCCO
+      LVOJCBQQ4HeJifUkYzANBgkqhkiG9w0BAQsFAAOCAQEADNIJSma8lV6bM4wEiA2y
+      6HRZ2t9F/5A5RWvAQrZHW9/7UiWF86DPjpD2gP1jexYPsdjbR0Vj260luPZfCOvL
+      zDWzTrP67ZGYaUT/74MtPk97GbdTXxGr6TO0S8gyPAVrgGKr2brHRBjqxvxFhG4Z
+      3Gk65Zy2UWHM3jmSXJZXU017M3sLLiYmuJHkQGKJNJee5h6+a7xTXsHkU3+0cTxM
+      UayEravhMCZDRaTNx2C+P/F5ZutZm5MNpGM9Y8JgNKD6Y3GDjpL6p0XojYDZkb3N
+      SNWweFP5B5MtPeOnPLiKp2jdpIYKCy9D0XSLcUMjxxSEJ8vgbjEx6IfJ0dVw44jO
+      hw==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIFFjCCAv6gAwIBAgIRAJErCErPDBinU/bWLiWnX1owDQYJKoZIhvcNAQELBQAw
+      TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+      cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTA0MDAwMDAw
+      WhcNMjUwOTE1MTYwMDAwWjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+      RW5jcnlwdDELMAkGA1UEAxMCUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+      AoIBAQC7AhUozPaglNMPEuyNVZLD+ILxmaZ6QoinXSaqtSu5xUyxr45r+XXIo9cP
+      R5QUVTVXjJ6oojkZ9YI8QqlObvU7wy7bjcCwXPNZOOftz2nwWgsbvsCUJCWH+jdx
+      sxPnHKzhm+/b5DtFUkWWqcFTzjTIUu61ru2P3mBw4qVUq7ZtDpelQDRrK9O8Zutm
+      NHz6a4uPVymZ+DAXXbpyb/uBxa3Shlg9F8fnCbvxK/eG3MHacV3URuPMrSXBiLxg
+      Z3Vms/EY96Jc5lP/Ooi2R6X/ExjqmAl3P51T+c8B5fWmcBcUr2Ok/5mzk53cU6cG
+      /kiFHaFpriV1uxPMUgP17VGhi9sVAgMBAAGjggEIMIIBBDAOBgNVHQ8BAf8EBAMC
+      AYYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBIGA1UdEwEB/wQIMAYB
+      Af8CAQAwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYfr52LFMLGMB8GA1UdIwQYMBaA
+      FHm0WeZ7tuXkAXOACIjIGlj26ZtuMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcw
+      AoYWaHR0cDovL3gxLmkubGVuY3Iub3JnLzAnBgNVHR8EIDAeMBygGqAYhhZodHRw
+      Oi8veDEuYy5sZW5jci5vcmcvMCIGA1UdIAQbMBkwCAYGZ4EMAQIBMA0GCysGAQQB
+      gt8TAQEBMA0GCSqGSIb3DQEBCwUAA4ICAQCFyk5HPqP3hUSFvNVneLKYY611TR6W
+      PTNlclQtgaDqw+34IL9fzLdwALduO/ZelN7kIJ+m74uyA+eitRY8kc607TkC53wl
+      ikfmZW4/RvTZ8M6UK+5UzhK8jCdLuMGYL6KvzXGRSgi3yLgjewQtCPkIVz6D2QQz
+      CkcheAmCJ8MqyJu5zlzyZMjAvnnAT45tRAxekrsu94sQ4egdRCnbWSDtY7kh+BIm
+      lJNXoB1lBMEKIq4QDUOXoRgffuDghje1WrG9ML+Hbisq/yFOGwXD9RiX8F6sw6W4
+      avAuvDszue5L3sz85K+EC4Y/wFVDNvZo4TYXao6Z0f+lQKc0t8DQYzk1OXVu8rp2
+      yJMC6alLbBfODALZvYH7n7do1AZls4I9d1P4jnkDrQoxB3UqQ9hVl3LEKQ73xF1O
+      yK5GhDDX8oVfGKF5u+decIsH4YaTw7mP3GFxJSqv3+0lUFJoi5Lc5da149p90Ids
+      hCExroL1+7mryIkXPeFM5TgO9r0rvZaBFOvV2z0gp35Z0+L4WPlbuEjN/lxPFin+
+      HlUjr8gRsI3qfJOQFy/9rKIJR0Y/8Omwt/8oTWgy1mdeHmmjk7j1nYsvC9JSQ6Zv
+      MldlTTKB3zhThV1+XWYp6rjd5JW1zbVWEkLNxE7GJThEUG3szgBVGP7pSWTUTsqX
+      nLRbwHOoq7hHwg==
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
+      MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT
+      DkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow
+      TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+      cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB
+      AQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC
+      ov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL
+      wYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D
+      LtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK
+      4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5
+      bHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y
+      sR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ
+      Xmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4
+      FQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc
+      SLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql
+      PRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND
+      TwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw
+      SwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1
+      c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx
+      +tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB
+      ATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu
+      b3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E
+      U1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu
+      MA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC
+      5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW
+      9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG
+      WCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O
+      he8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC
+      Dfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5
+      -----END CERTIFICATE-----
+    tls.key: |-
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEogIBAAKCAQEA43YYuGDzYPjH78PgL/i+q1N1duDXIOTFXU5cxABFrojoaeoo
+      ufwSRvw43LRFiYa+A0wGKaAD4mF/oaUPMw4bHIkiM+KLN6XYw6Nl7P7h844MudcV
+      NvjkmBgdIjsl0c0RqPYxyr2iEJGCppHH1fkBmdoCEEqkiE1AJlr8Kl6kaynnCfgH
+      8aDnroZam+vLsIN3DlBZfeD0MXglTOKwJg2NKFVFNImnf6PyxYEX9aIrTxaAlhfA
+      7vj0Zuq56fjkstuSU7ZSYtYxBy2G8INliEvrzXFntTX5EluUpTeFxdZb0rsvLVcB
+      asSoWgBNMZJPP7fvu2tmWcrJ5fBVsl4JgCQ0qQIDAQABAoIBAFsUNL3PhGS1+UkW
+      g7Rxw9dSadyaF0pCkIzWDesluME0bOvMKVafiqoF4LbvMFDrNTaYwHb2bde99p9B
+      Op7U7SI1/w4LjndP30YnLW8CeHNP0+SuLP6AFviX30KPsIsbtBCV1EY8PKKpwUj1
+      YrFZLbzvQJhJayxw0lkJYaONlgSaV3qu6ZGkxiAtWDehNlC35ToX3suUekTVbPEO
+      OcqN2X29Fa4Ce9EbERHZYHyPrvnse886aHPPJjSUWHieAc/Py3iMF1M/x+6jsqXA
+      7NHYB5DHKIc99lEo+I9KxLr2GpUwMIh7YG2BUUk0dHXOnwL6j3yLiwsmT1ZOxjUi
+      DOU80gkCgYEA8MIbiCJksOpy8d4wCcZQMcwJO+01NW4kDDNtLyItMIrLqLkr6FBm
+      rB6SNggqXzvT/dOGybliL81yQNW8PVptz2lZ4UUFM123uMEdp4eJmRaOkFW1j7mz
+      aT5ZjfUuT5YKyNSLDLEbzMJ5P233Hhw8KsYR72aZlRJbZXLWRkejd6sCgYEA8dx9
+      dcuLWgMyuFDZiAb5/NXTmnpgkmcBvtuUQ5t6ZfwKsySFvtZcBe0W21BntJGT0INU
+      d1CEgXw8+X04KXvONbaQf2edVaGy0oWZk5lEGDaimWwyw2CV0AzU6jMAdIxX/969
+      FHXmwe4jW3kBmH2giuI9CqOnQspGKzDgEVk5oPsCgYAv3CZk9ZFWqgSXmDesecPP
+      YmQjiZAeQvrfggmeaQjasXyy2bykvfbrGFiwbQcfT2Fg//+3cibWodyojtSQzb0u
+      kh7P7UyPXX38OEeQ2hy8VgOZJbCmFaBYt5BN7AN8xrL2IWpS55JDLhW0SkPptGsx
+      hZZjJN47CB8rF50I84zHaQKBgDngnLlKmy9QIpwO5O9zU/FYLgoCjQeb1MQagbFo
+      DHNJTDowXD0dyOm2IckbxaVlTO0R8G2Y/AyMcX72ozDyKpeZ95w1bGYoisVsKSM0
+      AyKUOHbkeIVeoJsn5u+ggtRhHVHiuHaj/DOeTCHApEwcjAWQPDFGlmkaRI5jZMti
+      AbNvAoGAaQWYN3d0gmjOS7csCikpOrsVBDKx4MISLhHw2C2/EKR4mLfElp794Qpv
+      zhWQu0kC1OHKsdTSwQeC7x+n0PrxZyy9XKW8CEV/IJrql5VPrEofMJKdb0SIi8Ot
+      kUSFWDoh75rKwYo1f7QG8SDUBc4Je5uJT9CKB1PB07kgKCsFVJc=
+      -----END RSA PRIVATE KEY-----
+prometheus:
+  config:
+    prometheus_yml: |-
+      global:
+        scrape_interval: 1m
+        scrape_timeout: 10s
+        evaluation_interval: 1m
+      alerting:
+        alertmanagers:
+          - follow_redirects: true
+            scheme: http
+            timeout: 10s
+            api_version: v2
+            static_configs:
+              - targets:
+                  - alertmanager.tanzu-system-monitoring.svc:80
+          - follow_redirects: true
+            scheme: http
+            timeout: 10s
+            api_version: v2
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_namespace]
+                separator: ;
+                regex: default
+                replacement: $1
+                action: keep
+              - source_labels: [__meta_kubernetes_pod_label_app]
+                separator: ;
+                regex: prometheus
+                replacement: $1
+                action: keep
+              - source_labels: [__meta_kubernetes_pod_label_component]
+                separator: ;
+                regex: alertmanager
+                replacement: $1
+                action: keep
+              - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_probe]
+                separator: ;
+                regex: .*
+                replacement: $1
+                action: keep
+              - source_labels: [__meta_kubernetes_pod_container_port_number]
+                separator: ;
+                regex: null
+                replacement: $1
+                action: drop
+            kubernetes_sd_configs:
+              - role: pod
+                follow_redirects: true
+      rule_files:
+        - /etc/config/alerting_rules.yml
+        - /etc/config/recording_rules.yml
+        - /etc/config/alerts
+        - /etc/config/rules
+      scrape_configs:
+        - job_name: prometheus
+          honor_timestamps: true
+          scrape_interval: 5s
+          scrape_timeout: 5s
+          metrics_path: /metrics
+          scheme: http
+          follow_redirects: true
+          static_configs:
+            - targets:
+                - localhost:9090
+        - job_name: kube-state-metrics
+          honor_timestamps: true
+          scrape_interval: 1m
+          scrape_timeout: 10s
+          metrics_path: /metrics
+          scheme: http
+          follow_redirects: true
+          static_configs:
+            - targets:
+                - prometheus-kube-state-metrics.tanzu-system-monitoring.svc.cluster.local:8080
+        - job_name: node-exporter
+          honor_timestamps: true
+          scrape_interval: 1m
+          scrape_timeout: 10s
+          metrics_path: /metrics
+          scheme: http
+          follow_redirects: true
+          static_configs:
+            - targets:
+                - prometheus-node-exporter.tanzu-system-monitoring.svc.cluster.local:9100
+        - job_name: kubernetes-pods
+          honor_timestamps: true
+          scrape_interval: 1m
+          scrape_timeout: 10s
+          metrics_path: /metrics
+          scheme: http
+          follow_redirects: true
+          relabel_configs:
+            - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+              separator: ;
+              regex: "true"
+              replacement: $1
+              action: keep
+            - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+              separator: ;
+              regex: (.+)
+              target_label: __metrics_path__
+              replacement: $1
+              action: replace
+            - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+              separator: ;
+              regex: ([^:]+)(?::\d+)?;(\d+)
+              target_label: __address__
+              replacement: $1:$2
+              action: replace
+            - separator: ;
+              regex: __meta_kubernetes_pod_label_(.+)
+              replacement: $1
+              action: labelmap
+            - source_labels: [__meta_kubernetes_namespace]
+              separator: ;
+              regex: (.*)
+              target_label: kubernetes_namespace
+              replacement: $1
+              action: replace
+            - source_labels: [__meta_kubernetes_pod_name]
+              separator: ;
+              regex: (.*)
+              target_label: kubernetes_pod_name
+              replacement: $1
+              action: replace
+          kubernetes_sd_configs:
+            - role: pod
+              follow_redirects: true
+        - job_name: kubernetes-nodes-cadvisor
+          honor_timestamps: true
+          scrape_interval: 1m
+          scrape_timeout: 5s
+          metrics_path: /metrics
+          scheme: https
+          authorization:
+            type: Bearer
+            credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+          tls_config:
+            ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+            insecure_skip_verify: true
+          follow_redirects: true
+          relabel_configs:
+            - separator: ;
+              regex: __meta_kubernetes_node_label_(.+)
+              replacement: $1
+              action: labelmap
+            - separator: ;
+              regex: (.*)
+              target_label: __address__
+              replacement: kubernetes.default.svc:443
+              action: replace
+            - source_labels: [__meta_kubernetes_node_name]
+              separator: ;
+              regex: (.+)
+              target_label: __metrics_path__
+              replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor
+              action: replace
+          kubernetes_sd_configs:
+            - role: node
+              follow_redirects: true
+        - job_name: kubernetes-apiservers
+          honor_timestamps: true
+          scrape_interval: 1m
+          scrape_timeout: 10s
+          metrics_path: /metrics
+          scheme: https
+          authorization:
+            type: Bearer
+            credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+          tls_config:
+            ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+            insecure_skip_verify: true
+          follow_redirects: true
+          relabel_configs:
+            - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+              separator: ;
+              regex: default;kubernetes;https
+              replacement: $1
+              action: keep
+          kubernetes_sd_configs:
+            - role: endpoints
+              follow_redirects: true

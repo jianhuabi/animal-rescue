@@ -1,0 +1,46 @@
+apiVersion: 'tanzu.vmware.com/v1'
+kind: SpringCloudGateway
+metadata:
+  name: gateway-tap
+spec:
+  api:
+    serverUrl: https://animal-rescue-dev-space.tap.h2o-4-512.h2o.vmware.com
+    title: 'Animal Rescue'
+    description: 'Sample application for Spring Cloud Gateway commercial product demos.'
+    documentation: 'https://github.com/spring-cloud-services-samples/animal-rescue/'
+    version: '1.0.0-K8s'
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedMethods:
+        - 'GET'
+        - 'PUT'
+        - 'POST'
+      allowedHeaders:
+        - '*'
+  count: 1
+  sso:
+    secret: animal-rescue-sso
+    roles-attribute-name: 'groups'
+
+  observability:
+    metrics:
+      prometheus:
+        enabled: true
+        annotations:
+          enabled: true
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: animal-rescue
+  namespace: dev-space
+spec:
+  routes:
+    - services:
+        - name: gateway-tap
+          port: 80
+  virtualhost:
+    fqdn: animal-rescue-dev-space.tap.h2o-4-512.h2o.vmware.com
+    tls:
+      secretName: dev-space/rescue-cert-tls

@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: ca-issuer
+  namespace: dev-space
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rescue-cert
+  namespace: dev-space
+spec:
+  secretName: rescue-cert-tls
+  dnsNames:
+    - animal-rescue-dev-space.tap.h2o-4-512.h2o.vmware.com
+  issuerRef:
+    name: ca-issuer
