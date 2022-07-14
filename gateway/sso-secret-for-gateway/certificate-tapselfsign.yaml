@@ -14,6 +14,6 @@ metadata:
 spec:
   secretName: rescue-cert-tls
   dnsNames:
-    - animal-rescue-dev-space.tap.h2o-4-512.h2o.vmware.com
+    - animal-rescue-dev-space.tap.h2o-4-862.h2o.vmware.com
   issuerRef:
     name: ca-issuer

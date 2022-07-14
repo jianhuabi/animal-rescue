@@ -3,8 +3,6 @@ kind: SpringCloudGatewayRouteConfig
 metadata:
   name: animal-rescue-frontend-route-config
 spec:
-  service:
-    name: animal-rescue-frontend
   routes:
     - ssoEnabled: true
       predicates:
@@ -12,6 +10,7 @@ spec:
         - Method=GET
       filters:
         - RedirectTo=302, /rescue
+      uri: http://animal-rescue-frontend.dev-space.svc.cluster.local
       order: 0
       tags:
         - sso
@@ -22,6 +21,7 @@ spec:
         - Method=GET
       filters:
         - RedirectTo=302, /rescue
+      uri: http://animal-rescue-frontend.dev-space.svc.cluster.local
       tags:
         - ui
       title: 'Animal Rescue home page'
@@ -30,7 +30,9 @@ spec:
         - Path=/rescue/**
         - Method=GET
       order: 1000
-      uri: animal-rescue-frontend.dev-space.svc.cluster.local
+      filters:
+        - StripPrefix=0
+      uri: http://animal-rescue-frontend.dev-space
       tags:
         - ui
       title: 'Animal Rescue UI Pages'

@@ -7,21 +7,24 @@ spec:
     name: animal-rescue-backend
   routes:
     - predicates:
-        - Path=/api/animals
+        - Path=/animals
         - Method=GET
       filters:
         - RateLimit=2,10s
-      uri: animal-rescue-backend.dev-space.svc.cluster.local
+        - StripPrefix=0
+      uri: http://animal-rescue-backend.dev-space.svc.cluster.local
       tags:
         - 'pet adoption'
       title: 'Retrieve pets/animal for adoption.'
       description: 'Retrieve all of the animals who are up for pet adoption.'
     - predicates:
-        - Path=/api/animals/{animalId}/adoption-requests
+        - Path=/animals/{animalId}/adoption-requests
         - Method=POST
+      filters:
+        - StripPrefix=0
       ssoEnabled: true
       tokenRelay: true
-      uri: animal-rescue-backend.dev-space.svc.cluster.local
+      uri: http://animal-rescue-backend.dev-space.svc.cluster.local
       tags:
         - 'pet adoption'
       title: 'Pet adoption API'
@@ -47,15 +50,16 @@ spec:
                     type: string
                 required: ['adopterName', 'email']
     - predicates:
-        - Path=/api/animals/{animalId}/adoption-requests/{adoptionId}
+        - Path=/animals/{animalId}/adoption-requests/{adoptionId}
         - Method=PUT,DELETE
-      uri: animal-rescue-backend.dev-space
+      uri: http://animal-rescue-backend.dev-space.svc.cluster.local
       ssoEnabled: true
       tokenRelay: true
       tags:
         - 'pet adoption'
       filters:
         - Scopes=animals.adopt
+        - StripPrefix=0
       title: 'Pet adoption API'
       description: 'Update/delete pet adoption requests.'
       model:
@@ -76,16 +80,20 @@ spec:
                     type: string
                 required: ['adopterName', 'email']
     - predicates:
-        - Path=/api/actuator/**
-      uri: animal-rescue-backend.dev-space.svc.cluster.local
+        - Path=/actuator/**
+      uri: http://animal-rescue-backend.dev-space.svc.cluster.local
+      filters:
+        - StripPrefix=0
       tags:
         - actuator
       title: 'API Actuator endpoints'
       description: 'Access API actuator endpoints to provide current status of backend service.'
     - predicates:
-        - Path=/api/whoami
+        - Path=/whoami
         - Method=GET
-      uri: animal-rescue-backend.dev-space.svc.cluster.local
+      filters:
+        - StripPrefix=0
+      uri: http://animal-rescue-backend.dev-space.svc.cluster.local
       ssoEnabled: true
       tokenRelay: true
       tags:
