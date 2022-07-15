@@ -89,17 +89,18 @@ jobs:
 
       - name: Build frontend image
         run: |
-          ./scripts/local.sh init
-          ./gradlew :frontend:assemble
-          docker build frontend -t springcloudservices/animal-rescue-frontend:latest
+          cd frontend
+          npm install
+          npm run build
+          docker build frontend -t michaelbi/animal-rescue-frontend:latest
       - name: Push frontend image
-        run: docker push springcloudservices/animal-rescue-frontend:latest
+        run: docker push michaelbi/animal-rescue-frontend:latest
 
       - name: Build backend image
         uses: mamezou-tech/buildpacks-action@master
         with:
-          image: springcloudservices/animal-rescue-backend
+          image: michaelbi/animal-rescue-backend
           path: backend
           builder: gcr.io/paketo-buildpacks/builder:base-platform-api-latest
       - name: Push backend image
-        run: docker push springcloudservices/animal-rescue-backend:latest
+        run: docker push michaelbi/animal-rescue-backend:latest
