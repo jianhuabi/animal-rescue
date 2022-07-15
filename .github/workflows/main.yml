@@ -98,7 +98,7 @@ jobs:
           cd frontend
           npm install
           npm run build
-          docker build frontend -t michaelbi/animal-rescue-frontend:latest
+          docker build . -t michaelbi/animal-rescue-frontend:latest
       - name: Push frontend image
         run: docker push michaelbi/animal-rescue-frontend:latest
 
