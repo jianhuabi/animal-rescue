@@ -70,11 +70,11 @@ testBackend() {
 
 testE2e() {
   cd e2e || exit 1
-  if [[ $1 == "$QUIET_MODE" ]]; then
-    npm test
-  else
-    npm run open
-  fi
+ # if [[ $1 == "$QUIET_MODE" ]]; then
+  #  npm test
+ # else
+ #   npm run open
+ # fi
   cd ..
 }
 
