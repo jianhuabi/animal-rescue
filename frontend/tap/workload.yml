@@ -12,7 +12,7 @@ spec:
     git:
       url: https://github.com/jianhuabi/animal-rescue
       ref:
-        branch: frontend
+        branch: main
     subPath: frontend
   params:
     - name: clusterBuilder

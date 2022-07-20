@@ -12,5 +12,5 @@ spec:
     git:
       url: https://github.com/jianhuabi/animal-rescue
       ref:
-        branch: backend
+        branch: main
     subPath: backend
