@@ -1,37 +1,47 @@
-apiVersion: "tanzu.vmware.com/v1"
+apiVersion: 'tanzu.vmware.com/v1'
 kind: SpringCloudGateway
 metadata:
   name: gateway-demo
+  namespace: animal-rescue
 spec:
   api:
-    serverUrl: http://animal-rescue.my.domain.io
-    title: "Animal Rescue"
-    description: "Sample application for Spring Cloud Gateway commercial product demos."
-    documentation: "https://github.com/spring-cloud-services-samples/animal-rescue/"
-    version: "1.0.0-K8s"
+    serverUrl: https://animal-rescue.tap.h2o-4-862.h2o.vmware.com
+    title: 'Animal Rescue'
+    description: 'Sample application for Spring Cloud Gateway commercial product demos.'
+    documentation: 'https://github.com/spring-cloud-services-samples/animal-rescue/'
+    version: '1.0.0-K8s'
     cors:
       allowedOrigins:
-      - "http://api-portal.my.domain.io"
-  count: 2
+        - '*'
+      allowedMethods:
+        - 'GET'
+        - 'PUT'
+        - 'POST'
+      allowedHeaders:
+        - '*'
+  count: 1
   sso:
     secret: animal-rescue-sso
+    roles-attribute-name: 'groups'
 
+  observability:
+    metrics:
+      prometheus:
+        enabled: true
+        annotations:
+          enabled: true
 ---
-
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
 metadata:
-  name: gateway-demo
-  labels:
-    app: gateway-demo
+  name: animal-rescue-k8s
+  namespace: animal-rescue
 spec:
-  rules:
-  - host: animal-rescue.my.domain.io
-    http:
-      paths:
-      - backend:
-          service:
-            name: gateway-demo
-            port:
-              number: 80
-        pathType: ImplementationSpecific
+  routes:
+    - services:
+        - name: gateway-demo
+          port: 80
+  virtualhost:
+    fqdn: animal-rescue.tap.h2o-4-862.h2o.vmware.com
+    tls:
+      secretName: animal-rescue/rescue-cert-tls

@@ -37,9 +37,7 @@ public class AnimalController {
 
 	@GetMapping("/whoami")
 	public String whoami(Principal principal) {
-		if (principal == null) {
-			return "";
-		}
+		LOGGER.info("@@@@@ Received get whoami request" + principal.toString());
 		return principal.getName();
 	}
 
@@ -57,35 +55,36 @@ public class AnimalController {
 	@PostMapping("/animals/{id}/adoption-requests")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<Void> submitAdoptionRequest(
-		Principal principal,
-		@PathVariable("id") Long animalId,
-		@RequestBody AdoptionRequest adoptionRequest
-	) {
+			Principal principal,
+			@PathVariable("id") Long animalId,
+			@RequestBody AdoptionRequest adoptionRequest) {
 		LOGGER.info("Received submit adoption request from {}", principal.getName());
 		adoptionRequest.setAnimal(animalId);
 		adoptionRequest.setAdopterName(principal.getName());
 		return animalRepository
 				.findById(animalId)
-				.switchIfEmpty(Mono.error(() -> new IllegalArgumentException(String.format("Animal with id %s doesn't exist!", animalId))))
+				.switchIfEmpty(
+						Mono.error(() -> new IllegalArgumentException(String.format("Animal with id %s doesn't exist!", animalId))))
 				.then(adoptionRequestRepository.save(adoptionRequest))
 				.then();
 	}
 
 	@PutMapping("/animals/{animalId}/adoption-requests/{adoptionRequestId}")
 	public Mono<Void> editAdoptionRequest(
-		Principal principal,
-		@PathVariable("animalId") Long animalId,
-		@PathVariable("adoptionRequestId") Long adoptionRequestId,
-		@RequestBody AdoptionRequest adoptionRequest
-	) {
+			Principal principal,
+			@PathVariable("animalId") Long animalId,
+			@PathVariable("adoptionRequestId") Long adoptionRequestId,
+			@RequestBody AdoptionRequest adoptionRequest) {
 		LOGGER.info("Received edit adoption request");
 		return animalRepository
 				.findById(animalId)
-				.switchIfEmpty(Mono.error(() -> new IllegalArgumentException(String.format("Animal with id %s doesn't exist!", animalId))))
+				.switchIfEmpty(
+						Mono.error(() -> new IllegalArgumentException(String.format("Animal with id %s doesn't exist!", animalId))))
 				.thenMany(adoptionRequestRepository.findByAnimal(animalId)
 						.filter(ar -> ar.getId().equals(adoptionRequestId))
-						.switchIfEmpty(Mono.error(() -> new IllegalArgumentException(String.format("AdoptionRequest with id %s doesn't exist!",
-								adoptionRequestId))))
+						.switchIfEmpty(
+								Mono.error(() -> new IllegalArgumentException(String.format("AdoptionRequest with id %s doesn't exist!",
+										adoptionRequestId))))
 						.doOnNext(existing -> {
 							if (!existing.getAdopterName().equals(principal.getName())) {
 								throw new AccessDeniedException(String.format("User %s has cannot delete user %s's adoption request",
@@ -100,18 +99,19 @@ public class AnimalController {
 
 	@DeleteMapping("/animals/{animalId}/adoption-requests/{adoptionRequestId}")
 	public Mono<Void> deleteAdoptionRequest(
-		Principal principal,
-		@PathVariable("animalId") Long animalId,
-		@PathVariable("adoptionRequestId") Long adoptionRequestId
-	) {
+			Principal principal,
+			@PathVariable("animalId") Long animalId,
+			@PathVariable("adoptionRequestId") Long adoptionRequestId) {
 		LOGGER.info("Received delete adoption request from {}", principal.getName());
 		return animalRepository
 				.findById(animalId)
-				.switchIfEmpty(Mono.error(() -> new IllegalArgumentException(String.format("Animal with id %s doesn't exist!", animalId))))
+				.switchIfEmpty(
+						Mono.error(() -> new IllegalArgumentException(String.format("Animal with id %s doesn't exist!", animalId))))
 				.thenMany(adoptionRequestRepository.findByAnimal(animalId)
 						.filter(ar -> ar.getId().equals(adoptionRequestId))
-						.switchIfEmpty(Mono.error(() -> new IllegalArgumentException(String.format("AdoptionRequest with id %s doesn't exist!",
-								adoptionRequestId))))
+						.switchIfEmpty(
+								Mono.error(() -> new IllegalArgumentException(String.format("AdoptionRequest with id %s doesn't exist!",
+										adoptionRequestId))))
 						.doOnNext(existing -> {
 							if (!existing.getAdopterName().equals(principal.getName())) {
 								throw new AccessDeniedException(String.format("User %s has cannot delete user %s's adoption request",
@@ -122,12 +122,12 @@ public class AnimalController {
 				.then();
 	}
 
-	@ExceptionHandler({AccessDeniedException.class})
+	@ExceptionHandler({ AccessDeniedException.class })
 	public ResponseEntity<String> handleAccessDeniedException(Exception e) {
 		return new ResponseEntity<>(e.getMessage(), new HttpHeaders(), HttpStatus.FORBIDDEN);
 	}
 
-	@ExceptionHandler({IllegalArgumentException.class})
+	@ExceptionHandler({ IllegalArgumentException.class })
 	public ResponseEntity<String> handleIllegalArgumentException(Exception e) {
 		return new ResponseEntity<>(e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
 	}
