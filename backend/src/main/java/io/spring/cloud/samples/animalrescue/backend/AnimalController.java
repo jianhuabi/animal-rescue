@@ -37,6 +37,12 @@ public class AnimalController {
 
 	@GetMapping("/whoami")
 	public String whoami(Principal principal) {
+
+		if (principal == null) {
+			LOGGER.info("@@@@@ Received annonymous whoami request");
+			return "";
+		}
+
 		LOGGER.info("@@@@@ Received get whoami request" + principal.toString());
 		return principal.getName();
 	}
