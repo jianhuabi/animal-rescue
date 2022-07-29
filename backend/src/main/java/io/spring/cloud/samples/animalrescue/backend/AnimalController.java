@@ -43,7 +43,7 @@ public class AnimalController {
 			return "";
 		}
 
-		LOGGER.info("@@@@@ Received get whoami request" + principal.toString());
+		LOGGER.info("@@@@@ Received get whoami request" + principal.getName() +  principal.toString());
 		return principal.getName();
 	}
 
